@@ -1,0 +1,7 @@
+scalar text
+
+type Extract {
+  id: ID
+  description: text
+  user: User
+}

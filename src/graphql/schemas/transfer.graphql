@@ -1,0 +1,28 @@
+scalar numeric
+scalar timestamptz
+
+type Query {
+  transfers: [Transfer] @auth
+}
+
+type Mutation {
+  new_transfer(transfer: InputTransfer): Boolean @auth
+  remove_transfer(id: ID): Boolean @auth
+}
+
+type Transfer {
+  id: ID
+  from: User
+  to: User
+  performed: User
+  value: numeric
+  created_at: timestamptz
+}
+
+input InputTransfer {
+  from: Int
+  to: Int
+  value: numeric
+}
+
+directive @auth on OBJECT | FIELD_DEFINITION

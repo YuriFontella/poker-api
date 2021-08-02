@@ -1,0 +1,29 @@
+scalar numeric
+
+type Query {
+  player(id: ID): Player @auth
+  players(limit: Int, offset: Int, name: String): [Player] @auth
+}
+
+type Mutation {
+  new_player(player: InputPlayer): Boolean @auth
+}
+
+type Player {
+  id: ID
+  name: String
+  email: String
+  image: String
+  credits: numeric
+  debts: numeric
+  coins: [Coin]
+}
+
+input InputPlayer {
+  name: String
+  email: String
+  role: String
+  password: String
+}
+
+directive @auth on OBJECT | FIELD_DEFINITION

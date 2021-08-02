@@ -1,0 +1,22 @@
+scalar numeric
+scalar timestamptz
+
+type Mutation {
+  new_coin(coin: InputCoin): Boolean @auth
+}
+
+type Coin {
+  id: ID
+  balance: numeric
+  type: String
+  created_at: timestamptz
+  extract: Extract
+}
+
+input InputCoin {
+  balance: numeric
+  type: String
+  user_id: Int
+}
+
+directive @auth on OBJECT | FIELD_DEFINITION

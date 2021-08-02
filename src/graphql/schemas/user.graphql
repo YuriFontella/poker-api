@@ -1,0 +1,14 @@
+scalar timestamptz 
+
+type User {
+  id: ID
+  name: String
+  email: String
+  image: String
+  role: String
+  password: String
+  status: Boolean
+  updated_at: timestamptz
+  created_at: timestamptz
+}
+
